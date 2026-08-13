@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido confirmado — MAKD SHOP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --negro:#111111; --blanco:#FFFFFF; --gris-texto:#767676; --gris-borde:#E4E4E4; --whatsapp:#25D366; --cashea:#5B3FD9; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ font-family:'Inter', Arial, sans-serif; color:var(--negro); background:var(--blanco); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .box{ max-width:480px; text-align:center; }
+  h1{ font-family:'Archivo', sans-serif; font-weight:900; text-transform:uppercase; font-size:32px; margin-bottom:14px; }
+  .badge{ display:inline-block; background:var(--cashea); color:#fff; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; padding:6px 14px; border-radius:2px; margin-bottom:18px; }
+  p{ color:var(--gris-texto); font-size:15px; line-height:1.6; margin-bottom:10px; }
+  .orden{ background:#FAFAFA; border:1px solid var(--gris-borde); border-radius:4px; padding:14px; margin:20px 0; font-size:14px; }
+  .orden b{ color:var(--negro); }
+  a.wa{ display:inline-flex; align-items:center; gap:8px; background:var(--negro); color:#fff; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.04em; padding:13px 24px; border-radius:2px; margin-top:14px; text-decoration:none; }
+  a.wa svg{ width:16px; height:16px; color:var(--whatsapp); }
+</style>
+</head>
+<body>
+  <div class="box">
+    <span class="badge">Cashea</span>
+    <h1>¡Ya casi!</h1>
+    <p>Tu orden quedó reservada. Para completarla, pasa por la tienda a pagar tu <b>inicial</b> en efectivo o pago móvil — apenas lo recibamos, confirmamos tu pedido en el sistema.</p>
+    <div class="orden" id="ordenBox">Cargando número de orden...</div>
+    <p>Guarda este número o el mensaje de WhatsApp para que sea más rápido en tienda.</p>
+    <a class="wa" id="waLink" target="_blank" rel="noopener" href="https://wa.me/584249307158">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36c1.38.72 2.94 1.13 4.62 1.13 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 17.87c-1.53 0-2.96-.42-4.19-1.15l-.3-.18-3.11.78.83-3.03-.2-.31a7.86 7.86 0 01-1.24-4.07c0-4.36 3.55-7.91 7.92-7.91 4.36 0 7.91 3.55 7.91 7.91 0 4.37-3.55 7.96-7.62 7.96z"/></svg>
+      Avisar por WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const idNumber = params.get("idNumber");
+    const ordenBox = document.getElementById("ordenBox");
+    const waLink = document.getElementById("waLink");
+
+    if (idNumber) {
+      ordenBox.innerHTML = 'Número de orden: <b>' + idNumber + '</b>';
+      const texto = encodeURIComponent("Hola, confirmé mi orden en Cashea (número " + idNumber + ") y quiero pagar la inicial.");
+      waLink.href = "https://wa.me/58XXXXXXXXXX?text=" + texto;
+    } else {
+      ordenBox.textContent = "No se recibió un número de orden — si tienes dudas, escríbenos por WhatsApp.";
+    }
+  </script>
+</body>
+</html>
