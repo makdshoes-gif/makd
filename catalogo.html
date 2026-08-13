@@ -65,6 +65,15 @@
   .card-cta:hover{ background:#333; }
   .card-cta svg{ width:16px; height:16px; color:var(--whatsapp); }
 
+  .cashea-box{ margin-top:8px; border:1px solid var(--gris-borde); border-radius:2px; padding:12px; }
+  .cashea-box .cashea-label{ display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:#5B3FD9; margin-bottom:8px; }
+  .cashea-box input{ width:100%; font-family:inherit; font-size:13.5px; padding:9px 10px; border:1px solid var(--gris-borde); border-radius:2px; margin-bottom:8px; }
+  .cashea-generar{ width:100%; background:#5B3FD9; color:#fff; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.04em; padding:10px 12px; border:none; border-radius:2px; }
+  .cashea-generar:hover{ background:#4a32b8; }
+  .cashea-generar:disabled{ background:#C9C3E8; cursor:not-allowed; }
+  .cashea-container{ min-height:0; }
+  .cashea-nota{ font-size:11.5px; color:var(--gris-texto); margin-top:6px; }
+
   footer{ border-top:1px solid var(--gris-borde); padding:32px 0; text-align:center; }
   footer p{ font-size:13px; color:var(--gris-texto); }
 
@@ -77,7 +86,7 @@
   <div class="nav-inner">
     <div class="brand"><img src="images/logo.png" alt="MAKD SHOP"><span>MAKD SHOP</span></div>
     <div class="nav-links"><a href="index.html">Inicio</a><a href="catalogo.html" class="activo">Catálogo</a></div>
-    <a class="nav-cta" href="https://wa.me/58XXXXXXXXXX" target="_blank" rel="noopener">
+    <a class="nav-cta" href="https://wa.me/584249307158" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36c1.38.72 2.94 1.13 4.62 1.13 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 17.87c-1.53 0-2.96-.42-4.19-1.15l-.3-.18-3.11.78.83-3.03-.2-.31a7.86 7.86 0 01-1.24-4.07c0-4.36 3.55-7.91 7.92-7.91 4.36 0 7.91 3.55 7.91 7.91 0 4.37-3.55 7.96-7.62 7.96z"/></svg>
       WhatsApp
     </a>
@@ -99,7 +108,7 @@
 
   <div class="aviso">
     <div class="aviso-box">
-      ⚠️ <b>Pendiente:</b> precios y tallas están como "Consultar" porque todavía no me los has pasado. Envíamelos y actualizo el catálogo con la info real.
+      ⚠️ <b>Pendiente:</b> precios y tallas están como "Consultar" porque todavía no me los has pasado. Envíamelos y actualizo el catálogo con la info real. El botón de <b>Cashea</b> también necesita el precio real de cada producto y tu clave pública de Cashea (<code>CASHEA_PUBLIC_API_KEY</code> en el script al final del archivo) para activarse — mientras tanto aparece deshabilitado.
     </div>
   </div>
 
@@ -119,10 +128,18 @@
           <h3>Tacos Adidas Goletto IX — Blanco / Azul / Fucsia</h3>
           <div class="card-precio"><span class="placeholder">Consultar precio</span></div>
           <div class="card-tallas">Tallas: consultar</div>
-          <a class="card-cta" target="_blank" rel="noopener" href="https://wa.me/58XXXXXXXXXX?text=Hola%2C%20me%20interesan%20los%20Tacos%20Adidas%20Goletto%20IX%20Blanco%2FAzul%2FFucsia%2C%20%C2%BFtienen%20disponibles%3F">
+          <a class="card-cta" target="_blank" rel="noopener" href="https://wa.me/584249307158?text=Hola%2C%20me%20interesan%20los%20Tacos%20Adidas%20Goletto%20IX%20Blanco%2FAzul%2FFucsia%2C%20%C2%BFtienen%20disponibles%3F">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36c1.38.72 2.94 1.13 4.62 1.13 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 17.87c-1.53 0-2.96-.42-4.19-1.15l-.3-.18-3.11.78.83-3.03-.2-.31a7.86 7.86 0 01-1.24-4.07c0-4.36 3.55-7.91 7.92-7.91 4.36 0 7.91 3.55 7.91 7.91 0 4.37-3.55 7.96-7.62 7.96z"/></svg>
             Consultar
           </a>
+          <div class="cashea-box" data-cashea data-producto-id="p1" data-nombre="Tacos Adidas Goletto IX Blanco/Azul/Fucsia" data-sku="MAKD-GOL-BAF" data-precio="0" data-imagen="images/tacos-goletto-blanco-1.jpg">
+            <div class="cashea-label">🟣 Paga en cuotas con Cashea</div>
+            <div class="cashea-form">
+              <input type="text" class="cashea-cedula" placeholder="Tu cédula (ej: V12345678)">
+              <button class="cashea-generar" type="button">Generar pago con Cashea</button>
+            </div>
+            <div class="cashea-container"></div>
+          </div>
         </div>
       </article>
 
@@ -143,10 +160,18 @@
           <h3>Tacos Adidas Goletto IX — Rosa</h3>
           <div class="card-precio"><span class="placeholder">Consultar precio</span></div>
           <div class="card-tallas">Tallas: consultar</div>
-          <a class="card-cta" target="_blank" rel="noopener" href="https://wa.me/58XXXXXXXXXX?text=Hola%2C%20me%20interesan%20los%20Tacos%20Adidas%20Goletto%20IX%20Rosa%2C%20%C2%BFtienen%20disponibles%3F">
+          <a class="card-cta" target="_blank" rel="noopener" href="https://wa.me/584249307158?text=Hola%2C%20me%20interesan%20los%20Tacos%20Adidas%20Goletto%20IX%20Rosa%2C%20%C2%BFtienen%20disponibles%3F">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36c1.38.72 2.94 1.13 4.62 1.13 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 17.87c-1.53 0-2.96-.42-4.19-1.15l-.3-.18-3.11.78.83-3.03-.2-.31a7.86 7.86 0 01-1.24-4.07c0-4.36 3.55-7.91 7.92-7.91 4.36 0 7.91 3.55 7.91 7.91 0 4.37-3.55 7.96-7.62 7.96z"/></svg>
             Consultar
           </a>
+          <div class="cashea-box" data-cashea data-producto-id="p2" data-nombre="Tacos Adidas Goletto IX Rosa" data-sku="MAKD-GOL-ROS" data-precio="0" data-imagen="images/tacos-goletto-rosa-1.jpg">
+            <div class="cashea-label">🟣 Paga en cuotas con Cashea</div>
+            <div class="cashea-form">
+              <input type="text" class="cashea-cedula" placeholder="Tu cédula (ej: V12345678)">
+              <button class="cashea-generar" type="button">Generar pago con Cashea</button>
+            </div>
+            <div class="cashea-container"></div>
+          </div>
         </div>
       </article>
 
@@ -171,6 +196,14 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36c1.38.72 2.94 1.13 4.62 1.13 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 17.87c-1.53 0-2.96-.42-4.19-1.15l-.3-.18-3.11.78.83-3.03-.2-.31a7.86 7.86 0 01-1.24-4.07c0-4.36 3.55-7.91 7.92-7.91 4.36 0 7.91 3.55 7.91 7.91 0 4.37-3.55 7.96-7.62 7.96z"/></svg>
             Consultar
           </a>
+          <div class="cashea-box" data-cashea data-producto-id="p3" data-nombre="Zapatillas Adidas Negro/Blanco" data-sku="MAKD-ZAP-NB" data-precio="0" data-imagen="images/zapatillas-negro-1.jpg">
+            <div class="cashea-label">🟣 Paga en cuotas con Cashea</div>
+            <div class="cashea-form">
+              <input type="text" class="cashea-cedula" placeholder="Tu cédula (ej: V12345678)">
+              <button class="cashea-generar" type="button">Generar pago con Cashea</button>
+            </div>
+            <div class="cashea-container"></div>
+          </div>
         </div>
       </article>
 
@@ -197,9 +230,84 @@
   botones.forEach(btn => {
     btn.addEventListener('click', () => {
       botones.forEach(b => b.classList.remove('activo'));
-      btn.classList.add('activo');
-      const filtro = btn.dataset.filtro;
+      btn.classList.add('activo');      const filtro = btn.dataset.filtro;
       cards.forEach(card => { card.style.display = (filtro === 'todos' || card.dataset.cat === filtro) ? 'flex' : 'none'; });
+    });
+  });
+</script>
+
+<!-- ===== Integración Cashea (pago en cuotas) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/cashea-web-checkout-sdk/dist/bundle.js"></script>
+<script>
+  // TODO: reemplazar por la clave PÚBLICA real que te dé el equipo de Cashea.
+  // Nunca pongas aquí la clave PRIVADA — esa solo va en el backend del panel de administración.
+  const CASHEA_PUBLIC_API_KEY = "PUBLIC_API_KEY_PENDIENTE";
+
+  // A dónde se redirige al cliente después de confirmar su orden en Cashea.
+  // El pago inicial se completa en la tienda (efectivo o pago móvil) y el
+  // administrador lo confirma desde el panel — ver sección "Pedidos Cashea".
+  const CASHEA_REDIRECT_URL = window.location.origin + window.location.pathname.replace("catalogo.html", "cashea-gracias.html");
+
+  function activoCashea() {
+    return typeof CheckoutSDK !== "undefined" && CASHEA_PUBLIC_API_KEY && CASHEA_PUBLIC_API_KEY !== "PUBLIC_API_KEY_PENDIENTE";
+  }
+
+  document.querySelectorAll("[data-cashea]").forEach((box) => {
+    const boton = box.querySelector(".cashea-generar");
+    const cedulaInput = box.querySelector(".cashea-cedula");
+    const contenedor = box.querySelector(".cashea-container");
+    const precio = parseFloat(box.dataset.precio || "0");
+
+    if (!precio || precio <= 75) {
+      box.querySelector(".cashea-form").innerHTML = '<div class="cashea-nota">Cashea disponible en cuanto se cargue el precio real de este producto.</div>';
+      return;
+    }
+
+    boton.addEventListener("click", () => {
+      const cedula = (cedulaInput.value || "").trim();
+      if (!cedula) {
+        cedulaInput.style.borderColor = "#7C1F2E";
+        cedulaInput.placeholder = "Escribe tu cédula para continuar";
+        return;
+      }
+      if (!activoCashea()) {
+        contenedor.innerHTML = '<div class="cashea-nota">Cashea todavía no está activado en esta tienda (falta configurar la clave pública). Escríbenos por WhatsApp mientras tanto.</div>';
+        return;
+      }
+
+      const sdk = new CheckoutSDK({ apiKey: CASHEA_PUBLIC_API_KEY });
+
+      const payload = {
+        identificationNumber: cedula,
+        externalClientId: cedula,
+        deliveryMethod: "IN_STORE",
+        merchantName: "MAKD SHOP",
+        redirectUrl: CASHEA_REDIRECT_URL,
+        deliveryPrice: 0,
+        orders: [
+          {
+            store: { id: 1, name: "MAKD SHOP", enabled: true },
+            products: [
+              {
+                id: box.dataset.productoId,
+                name: box.dataset.nombre,
+                sku: box.dataset.sku,
+                description: box.dataset.nombre,
+                imageUrl: window.location.origin + window.location.pathname.replace("catalogo.html", box.dataset.imagen),
+                quantity: 1,
+                price: precio,
+                tax: 0,
+                discount: 0,
+              },
+            ],
+          },
+        ],
+      };
+
+      contenedor.innerHTML = "";
+      sdk.createCheckoutButton({ payload, container: contenedor });
+      boton.style.display = "none";
+      cedulaInput.style.display = "none";
     });
   });
 </script>
